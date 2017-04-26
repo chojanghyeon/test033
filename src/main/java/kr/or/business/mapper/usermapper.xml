@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="kr.or.business.DAO.userDAO">
+	
+	<insert id="insertUser">
+		insert into USER
+	    (user_id,user_pw,user_name,user_birth) 
+		values
+		(#{user_id},#{user_pw},#{user_name},#{user_birth})
+	</insert>
+	
+	<insert id="registerStore" parameterType="kr.or.business.DTO.storeDTO">
+		insert into STORE (
+		store_name,store_type,store_image) 
+		values
+		(#{store_name},#{store_type},#{store_image})
+	</insert>
+	
+	<select id="allstore" resultType="kr.or.business.DTO.storeDTO">
+		select * from store
+	</select>
+	
+	<select id="yumu" resultType="kr.or.business.DTO.storeinforDTO">
+		select * from STORE_INFOR where store_name = #{store_name}
+	</select>
+	
+	<select id="selectregion" resultType="kr.or.business.DTO.regionDTO">
+		select * from REGION where add_num = #{add_num}
+	</select>
+	
+	<select id="idCheck" resultType="int">
+		select count(*) from USER where user_id = #{user_id}
+	</select>
+	
+	<select id="pwCheck">
+		select user_pw from USER where user_id = #{user_id}
+	</select>
+		
+	</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="kr.or.business.DAO.regionDAO">
+	
+	<select id="viewRegion" resultType="kr.or.business.DTO.buyregionDTO">
+	select * from DONG d join BUYREGION b on d.adddetail_dong = b.adddetail_dong where b.adddetail_dong = #{adddetail_dong}
+	</select>
+	
+	<select id="donglist" resultType="String">
+	select adddetail_dong from DONG where add_num = #{add_num}
+	</select>
+	
+	<select id="dongname" resultType="String">
+	select add_ku from REGION where add_num = #{add_num}
+	</select>
+	</mapper>
+	
